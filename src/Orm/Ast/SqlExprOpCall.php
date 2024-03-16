@@ -8,11 +8,6 @@ use OpenCore\Orm\Utils\SqlUtils;
 
 class SqlExprOpCall extends SqlExpr {
 
-  const FN_COUNT = 'COUNT';
-  const FN_MAX = 'MAX';
-  const FN_MIN = 'MIN';
-  const FN_AVG = 'AVG';
-
   public ?array $args = null;
 
   public function __construct(

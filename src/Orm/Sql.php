@@ -41,19 +41,11 @@ class Sql {
   }
 
   public static function count(SqlField $field): SqlCall {
-    return (new SqlCall(SqlExprOpCall::FN_COUNT))->withFieldArg($field);
+    return self::call('COUNT')->withFieldArg($field);
   }
 
-  public static function max(SqlField $field): SqlCall {
-    return (new SqlCall(SqlExprOpCall::FN_MAX))->withFieldArg($field);
-  }
-
-  public static function min(SqlField $field): SqlCall {
-    return (new SqlCall(SqlExprOpCall::FN_MIN))->withFieldArg($field);
-  }
-
-  public static function avg(SqlField $field): SqlCall {
-    return (new SqlCall(SqlExprOpCall::FN_AVG))->withFieldArg($field);
+  public static function call(string $fn): SqlCall {
+    return new SqlCall($fn);
   }
 
   public static function naturalJoin(SqlTable $table): SqlJoin {
