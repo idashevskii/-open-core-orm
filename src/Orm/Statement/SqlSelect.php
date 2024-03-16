@@ -50,8 +50,8 @@ final class SqlSelect extends SqlBuilder {
     return $this;
   }
 
-  public function selectCall(SqlCall $expr): self {
-    $this->st->selectExprs[] = $expr->st;
+  public function selectCall(SqlCall $expr, string $alias = null): self {
+    $this->st->selectExprs[] = new SqlSelectExpr($expr->st, $alias);
     return $this;
   }
 
@@ -84,7 +84,7 @@ final class SqlSelect extends SqlBuilder {
         }
       }
     });
-    $ret = [];
+
     foreach ($requiredTables as $tabId => $reqTab) {
       if (isset ($selectedTables[$tabId])) {
         continue;

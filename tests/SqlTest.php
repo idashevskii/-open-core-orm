@@ -40,13 +40,13 @@ final class SqlTest extends TestCase {
 
     $res = Sql::select()
       ->fields([$tab1Prop])
-      ->selectCall(Sql::count($tab1Id))
+      ->selectCall(Sql::count($tab1Id), 'total')
       ->whereEquals($tab2Prop, 42)
       ->groupBy($tab1Prop)
       ->build();
 
     $this->assertEquals(
-      'SELECT `t1`.`prop1`, COUNT(`t1`.`id`)'
+      'SELECT `t1`.`prop1`, COUNT(`t1`.`id`) AS `total`'
       . ' FROM `tab1` AS `t1`'
       . ' NATURAL INNER JOIN `tab2` AS `t2`'
       . ' WHERE `t2`.`prop2` = ?'

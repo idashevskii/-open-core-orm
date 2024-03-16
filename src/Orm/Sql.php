@@ -44,6 +44,18 @@ class Sql {
     return (new SqlCall(SqlExprOpCall::FN_COUNT))->withFieldArg($field);
   }
 
+  public static function max(SqlField $field): SqlCall {
+    return (new SqlCall(SqlExprOpCall::FN_MAX))->withFieldArg($field);
+  }
+
+  public static function min(SqlField $field): SqlCall {
+    return (new SqlCall(SqlExprOpCall::FN_MIN))->withFieldArg($field);
+  }
+
+  public static function avg(SqlField $field): SqlCall {
+    return (new SqlCall(SqlExprOpCall::FN_AVG))->withFieldArg($field);
+  }
+
   public static function naturalJoin(SqlTable $table): SqlJoin {
     return new SqlJoin(SqlJoinSpec::JOIN_NATURAL, $table);
   }
