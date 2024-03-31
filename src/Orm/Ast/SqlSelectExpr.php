@@ -8,14 +8,14 @@ final class SqlSelectExpr extends SqlAst {
 
   public function __construct(
     private readonly SqlExpr $expr,
-    private readonly string $alias,
+    private readonly ?string $alias = null,
   ) {
   }
 
   public function buildInto(Sql $result) {
     $expr = $this->expr;
     $this->expr->buildInto($result);
-    if (!($expr instanceof SqlExprField && $expr->field->name === $this->alias)) {
+    if ($this->alias !== null && !($expr instanceof SqlExprField && $expr->field->name === $this->alias)) {
       $result->sql .= ' AS `' . $this->alias . '`';
     }
   }
