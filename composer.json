@@ -10,7 +10,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "OpenCore\\": "tests/"
+      "OpenCore\\Tests\\": "tests/"
     }
   },
   "require-dev": {

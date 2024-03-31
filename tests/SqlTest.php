@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace App\Tests;
+namespace OpenCore\Tests;
 
 use OpenCore\Orm\Sql;
 use PHPUnit\Framework\TestCase;
