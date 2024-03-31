@@ -46,11 +46,20 @@ final class ObjectDefinitionTest extends TestCase {
 
     $res = [];
 
+    $tableOrder = [];
     foreach ($def->getRequiredDefinitions() as $otherDef) {
       $props = $otherDef->getOwnProperties();
+      $tabName = $otherDef->getSqlTable()->name;
       sort($props);
-      $res[$otherDef->getSqlTable()->name] = $props;
+      $res[$tabName] = $props;
+      $tableOrder[] = $tabName;
     }
+
+    $this->assertEquals([
+      'uc_user_base',
+      'uc_user',
+      'uc_user_extended',
+    ], $tableOrder);
 
     $this->assertEquals([
       'uc_user_base' => ['id', 'lastLoginTime', 'login', 'passwordHash'],

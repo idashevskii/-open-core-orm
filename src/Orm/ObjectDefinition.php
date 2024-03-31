@@ -116,6 +116,10 @@ final class ObjectDefinition {
     return $this->reqDefs;
   }
 
+  public function getPrimaryProp() {
+    return $this->propPrimary;
+  }
+
   public function getProperties(): array {
     return $this->props;
   }
