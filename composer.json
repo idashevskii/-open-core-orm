@@ -5,7 +5,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "OpenCore\\": "src/"
+      "OpenCore\\Orm\\": "src/"
     }
   },
   "autoload-dev": {
